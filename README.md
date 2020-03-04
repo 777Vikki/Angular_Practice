@@ -1,2 +1,2 @@
-# Demo_Project
+# Angular
 This is Angular Practice Project. 
