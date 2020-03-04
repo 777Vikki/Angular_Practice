@@ -1,2 +1,2 @@
 # Demo_Project
-This project on LKO 
+This is Angular Practice Project. 
