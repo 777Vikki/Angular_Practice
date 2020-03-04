@@ -1,4 +1,19 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <h1>SimpleCRM</h1>
+    <span class="menu-spacer"></span>
+    <div>
+      <a mat-button (click)="navi('/')"> Dashboard </a>
+      <a mat-button (click)="navi('/home1')" > Home1 </a>
+      <a mat-button (click)="navi('/home2')"> Home2 </a>
+    </div>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row>
+      <span style="font-size: 12px;">SimpleCRM helps you easily manage your contacts</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" (click)="navi('/')">Navbar</a>
   <button
     class="navbar-toggler"
@@ -26,4 +41,7 @@
       </li>
     </ul>
   </div>
-</nav>
+</nav> -->
+
+
+

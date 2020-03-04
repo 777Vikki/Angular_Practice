@@ -6,17 +6,18 @@ import { GeneralLayoutComponent } from './general-layout/general-layout.componen
 import { NavbarModule } from '../components/navbar/navbar.module';
 import { routes as GeneralRoutes } from "./general-layout/general-layout.routes";
 import {routes as DashboardRoutes} from "./dashboard-layout/dashboard-layout.routes";
-import { AngularMaterialModule } from '../angular-material/angular-material.module';
 
 
+import {AngularMaterialModule} from './../angular-material/angular-material.module';
 
 @NgModule({
   declarations: [DashboardLayoutComponent, GeneralLayoutComponent],
   imports: [
     CommonModule,
     NavbarModule,
-    RouterModule.forChild([...GeneralRoutes, ...DashboardRoutes])
+    RouterModule.forChild([...GeneralRoutes, ...DashboardRoutes]),
+    AngularMaterialModule,
   ],
-  exports: [DashboardLayoutComponent, GeneralLayoutComponent]
+  exports: [DashboardLayoutComponent, GeneralLayoutComponent, AngularMaterialModule]
 })
 export class LayoutsModule { }
