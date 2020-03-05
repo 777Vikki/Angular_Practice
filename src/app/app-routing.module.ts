@@ -4,20 +4,23 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'module1'
+    path: "",
+    pathMatch: "full",
+    redirectTo: 'dashboard'
   },
-
   {
-    path: 'layout', 
-      loadChildren: () => 
-      (import('./layout/layout.module').then(mod => mod.LayoutModule))
-  }
+    path: "layouts",
+    loadChildren: () =>
+      import("./layouts/layouts.module").then(mod => mod.LayoutsModule)
+  },
+  {
+    path: "**",
+    redirectTo: "auth/404"
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { enableTracing: false, useHash: false })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
