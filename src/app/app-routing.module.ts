@@ -6,13 +6,17 @@ const routes: Routes = [
   {
     path: "",
     pathMatch: "full",
-    redirectTo: "dashboard"
+    redirectTo: 'dashboard'
   },
   {
     path: "layouts",
     loadChildren: () =>
-    import("./layouts/layouts.module").then(mod => mod.LayoutsModule)
-  }
+      import("./layouts/layouts.module").then(mod => mod.LayoutsModule)
+  },
+  {
+    path: "**",
+    redirectTo: "auth/404"
+  },
 ];
 
 @NgModule({

@@ -1,17 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SignUpComponent } from './sign-up/sign-up.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { Page404Component } from './page404/page404.component';
 
 
 const routes: Routes = [
   {
-    path: "sign-up",
+    path: "sign-in",
     redirectTo: ""
   },
   {
     path: "",
-    // pathMatch: "full",
-    component: SignUpComponent
+    pathMatch: 'full',
+    component: SignInComponent
+  },
+  {
+    path: "404",
+    component: Page404Component
   }
 ];
 
@@ -19,7 +24,7 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AuthRoutingModule { 
+export class AuthRoutingModule {
   constructor() {
     console.log("#AuthRoutingModule");
   }

@@ -15,8 +15,7 @@ import {AngularMaterialModule} from './../angular-material/angular-material.modu
   imports: [
     CommonModule,
     NavbarModule,
-    RouterModule.forChild([...GeneralRoutes, ...DashboardRoutes]),
-    AngularMaterialModule,
+    RouterModule.forChild([...GeneralRoutes, ...DashboardRoutes])
   ],
   exports: [DashboardLayoutComponent, GeneralLayoutComponent, AngularMaterialModule]
 })
