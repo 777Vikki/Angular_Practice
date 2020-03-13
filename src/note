@@ -1,0 +1,5 @@
+The @ViewChild and @ViewChildren decorators in Angular provide a way to access and manipulate DOM elements, directives and components.
+You can use ViewChild if you need to query one element from the DOM and ViewChildren for multiple elements.
+•	selector - the selector of the element to query. This can be a directive type or a name.
+•	read - read a different token from the queried elements.
+•	static - This is new in Angular 8 and indicates whether or not to resolve query results before change detection runs.
