@@ -1,2 +1,6 @@
 to run fr:
 ng serve --configuration=fr
+
+create message file:
+ng xi18n --output-path src/locale --i18n-locale fr --out-file messages.fr.xlf
+Here always new file generate. previous file dissmiss.
