@@ -1,0 +1,130 @@
+:root {
+    --primary: #007bff;
+    --light: #fff;
+}
+
+/* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+} 
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+header {
+    width: 100%;
+}
+.fixed-top {
+    position: fixed;
+    top: 0;
+}
+
+.sidebar .navbar {
+    transition: 0.5;
+    overflow-x: hidden;
+    width: 0px;
+    height: 100vh;
+}
+
+.nav-link {
+    cursor: pointer;
+    color: #818181;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.nav-link:hover {
+    color: #f1f1f1;
+}
+
+.nav-item {
+    text-align: center;
+    padding: 18px;
+}
+
+.navbar-brand {
+    text-decoration: none;
+    color: #818181;
+    padding: 20px;
+}
+
+.navbar-brand:hover {
+    color: #f1f1f1;
+}
+
+.navbar-brand:hover {
+    /* color: #f1f1f1; */
+}
+
+.navbar-toggler2{
+    height: 27px;
+    width: 20px;
+    padding: 0;
+    border: 0;
+    font-size: 20px;
+    margin-top: 18px;
+    background-color: silver;
+    display: none;
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.navbar-nav {
+    display: flex;
+    list-style-type: none;
+} 
+
+.navbar-expand-lg {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mr-auto {
+    margin-right: auto;
+}
+
+.navbar-flex-nav {
+    margin-left: auto;
+}
+
+.bg-dark {
+    color: #fff!important;
+    background-color: #343a40!important;
+}
+
+.bg-primary {
+    color: #fff!important;
+    background-color: blue!important;
+}
+
+@media only screen and (max-width: 1000px) {
+    .nav-icon-flex {
+        display: none;
+    }
+
+    .responsive.nav-icon-flex {
+        transition: 0.5s;
+        display: block;
+        position: absolute;
+        background-color: red;
+        top: 50px;
+        right: 0;
+        min-width: 150px;
+        overflow: auto;
+    }
+    header {
+        position: relative;
+    }
+
+    .navbar-toggler2 {
+        position: absolute;
+        top: 0;
+        right: 0px;
+        display: block;
+    }
+}
