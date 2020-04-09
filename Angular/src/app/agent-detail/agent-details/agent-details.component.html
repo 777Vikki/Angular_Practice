@@ -1,0 +1,54 @@
+<div class="row m-2 p-2" style="width: 40%;">
+  <div class="col">
+    <div class="row">
+      <div class="col-6">
+        <h3>Agent Details</h3>
+      </div>
+      <div class="col-6 text-right">
+        <h3>...</h3>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <table class="table table-borderless table-striped">
+        <thead>
+          <tr>
+            <th scope="col">
+              Name 
+              <i-feather class="arrow-icon" *ngIf="ascendingSwitch" (click)="onAscending()" name="arrow-up"></i-feather>
+              <i-feather class="arrow-icon" *ngIf="descendingSwitch" (click)="onDescending()" name="arrow-down"></i-feather>
+            </th>
+            <th scope="col">
+              Phone Number
+            </th>
+            <th scope="col">
+              Email
+            </th>
+            <th scope="col" class="text-right">
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let agent of agentDetails">
+            <td>{{ agent.Name }}</td>
+            <td>{{ agent.PhoneNumber }}</td>
+            <td>{{ agent.Email }}</td>
+            <td class="text-right">
+              <i-feather class="mr-3" name="edit2"></i-feather>
+              <i-feather name="trash"></i-feather>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-1"><button class="btn btn-primary" (click)="onPostAgentDetail1()">Post1</button></div>
+  <div class="col-1"><button class="btn btn-primary" (click)="onPostAgentDetail2()">Post2</button></div>
+  <div class="col-1"><button class="btn btn-primary" (click)="onPostAgentDetail3()">Post3</button></div>
+  <div class="col-1"><button class="btn btn-primary" (click)="onGetAgentDetail()">Get</button></div>
+  <div class="col-8"><button class="btn btn-primary" (click)="onResetAgentDetail()">Reset</button></div>
+</div>
+
+
