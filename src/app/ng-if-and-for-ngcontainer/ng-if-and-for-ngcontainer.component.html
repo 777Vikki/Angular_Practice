@@ -1,0 +1,34 @@
+<!-- use *ngIf and *ngFor together -->
+
+<!-- <div class="lesson" *ngIf="lessons" *ngFor="let lesson of lessons">
+    <div class="lesson-detail">
+        {{lesson | json}}
+    </div>
+</div> -->
+
+<!--Note It would not work and we will get error -->
+
+
+
+<!-- Here we will use *ngIf and *ngFor in different div -->
+
+<!-- <div *ngIf="lessons"> 
+  <div class="lesson" *ngFor="let lesson of lessons">
+    <div class="lesson-detail">
+      {{ lesson | json }}
+    </div>
+  </div>
+</div> -->
+
+<!-- Note it works but contains extra div -->
+
+
+<!-- To avoid extra div we use ng-container -->
+
+<!-- <ng-container *ngIf="lessons"> 
+  <div class="lesson" *ngFor="let lesson of lessons">
+    <div class="lesson-detail">
+      {{ lesson | json }}
+    </div>
+  </div>
+</ng-container>  -->

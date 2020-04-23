@@ -1,0 +1,11 @@
+<!-- here we used [ngIf] and [ngIfElse] -->
+
+<ng-template [ngIf]="lessons" [ngIfElse]="loading">
+    <div class="lessons-list">
+        Lessons
+    </div>
+</ng-template>
+
+<ng-template #loading>
+    <div>Loading...</div>
+</ng-template>
