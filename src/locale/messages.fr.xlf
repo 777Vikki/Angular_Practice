@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template" target-language="fr">
+    <body>
+      <trans-unit id="header" datatype="html">
+        <source>M <x id="INTERPOLATION" equiv-text="{{name}}"/></source><target state="new">M fr <x id="INTERPOLATION" equiv-text="{{name}}"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <note priority="1" from="description">vm</note>
+        <note priority="1" from="meaning">v</note>
+      </trans-unit>
+      <trans-unit id="kheader" datatype="html">
+        <source>mgjyugjhgjh,sjdlkf</source><target state="new">mgjyugjhgjh,sjdlkf fr</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="description">km</note>
+        <note priority="1" from="meaning">k</note>
+      </trans-unit><trans-unit id="94b189bb5940eca3750d313d8ef59f3a4e33ec9b" datatype="html">
+        <source>ced</source><target state="new">ced</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">VI@aaa</note>
+        <note priority="1" from="meaning">M</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

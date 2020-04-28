@@ -1,0 +1,44 @@
+<!-- We can use data interpolation and input -->
+
+<form [formGroup]="agentForm" (ngSubmit)="onSubmit()">
+  <div
+    formArrayName="agents"
+    *ngFor="let agent of agents.controls; let i = index"
+  >
+    <div [formGroupName]="i">
+      Name: {{agent.value.Name}} <br>
+      <!-- Name: <input type="text" formControlName="Name" /> <br /> -->
+      Unit: <input type="number" formControlName="Unit" />
+      <input type="checkbox" formControlName="Value" />
+      <div
+        formArrayName="Phone"
+        *ngFor="let phoneNo of agent.get('Phone').controls; let j = index"
+      >
+      Phone: {{phoneNo.value}}
+        <!-- Phone: <input type="text" [formControlName]="j" /> -->
+      </div>
+      <div
+        formArrayName="Utilities"
+        *ngFor="let utility of agent.get('Utilities').controls; let j = index"
+      >
+        <div [formGroupName]="j">
+          <div>Type: <input type="text" formControlName="Type" /></div>
+          <div
+            formArrayName="Amount"
+            *ngFor="let am of utility.get('Amount').controls; let k = index"
+          >
+            <div [formGroupName]="k">
+              Catageries: <input type="text" formControlName="Catageries" />
+              <br />
+              UtilityName: <input type="text" formControlName="UtilityName" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+</form>
