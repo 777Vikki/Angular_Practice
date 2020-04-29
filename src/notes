@@ -1,0 +1,120 @@
+import { IPnrViewStateParams } from "./pnr-state.params";
+import { PnrViewState } from "./pnr.view-state";
+
+const DEFAULT_TEXT = "text-dark";
+const GREEN_TEXT = "text-success";
+const RED_TEXT = "text-danger";
+const YELLOW_TEXT = "text-warning";
+const UNIMPORTANT_TEXT = "text-ultra-muted";
+const IMPORTANT_TEXT = "text-danger";
+const LIGHT_TEXT = "text-light";
+const YELLOW_BG = "bg-warning";
+const RED_BG = "bg-danger";
+
+const DEFAULT_PARAMS: IPnrViewStateParams = {
+  arrow: DEFAULT_TEXT,
+  bg: "",
+  layover_bg: "",
+  layover_central_bg: "connector-bg-with-divider",
+  layover_border: "",
+  layover_text: DEFAULT_TEXT,
+  location_name: DEFAULT_TEXT,
+  chair_letter: DEFAULT_TEXT,
+  time_date: DEFAULT_TEXT,
+  unimportant_text: UNIMPORTANT_TEXT,
+  find_irop_btn: "showC",
+  cancel_irop_btn: "hideC"
+};
+
+export function getPnrParamsFn(viewState: PnrViewState): IPnrViewStateParams {
+  let params: Partial<IPnrViewStateParams> = {};
+
+  switch (viewState) {
+    case PnrViewState.BOARDED: {
+      params = {
+        chair_letter: GREEN_TEXT,
+        arrow: GREEN_TEXT,
+        location_name: GREEN_TEXT,
+        layover_text: GREEN_TEXT
+      };
+      break;
+    }
+
+    case PnrViewState.FLOWN: {
+      params = {
+        chair_letter: UNIMPORTANT_TEXT,
+        arrow: UNIMPORTANT_TEXT,
+        location_name: UNIMPORTANT_TEXT,
+        time_date: UNIMPORTANT_TEXT,
+        layover_text: UNIMPORTANT_TEXT
+      };
+      break;
+    }
+
+    case PnrViewState.IROP_EDIT_MODE: {
+      params = {
+        chair_letter: YELLOW_TEXT,
+        location_name: LIGHT_TEXT,
+        arrow: LIGHT_TEXT,
+        time_date: LIGHT_TEXT,
+        unimportant_text: LIGHT_TEXT,
+        layover_text: YELLOW_TEXT,
+        bg: "irop-in-action",
+        layover_bg: "connector-bg-irop-in-action",
+        layover_central_bg: "",
+        layover_border: "warning-border",
+        cancel_irop_btn: "showC",
+        find_irop_btn: "hideC"
+      };
+      break;
+    }
+
+    case PnrViewState.IROP_TO_BE_CONFIRMED: {
+      params = {
+        chair_letter: RED_TEXT,
+        location_name: LIGHT_TEXT,
+        arrow: LIGHT_TEXT,
+        time_date: LIGHT_TEXT,
+        unimportant_text: LIGHT_TEXT,
+        layover_text: RED_TEXT + " strike-through",
+        bg: RED_BG,
+        layover_bg: "connector-bg-irop-to-confirm",
+        layover_central_bg: "",
+        layover_border: "danger-border",
+        cancel_irop_btn: "hideC",
+        find_irop_btn: "hideC"
+      };
+      break;
+    }
+
+    case PnrViewState.IROP_UNTOUCHED: {
+      params = {
+        arrow: RED_TEXT,
+        location_name: RED_TEXT,
+        chair_letter: RED_TEXT,
+        layover_text: RED_TEXT,
+        cancel_irop_btn: "hideC",
+        find_irop_btn: "showC"
+      };
+      break;
+    }
+
+    case PnrViewState.TRANCE_MODE: {
+      params = {
+        bg: "trance"
+      };
+      break;
+    }
+
+    case PnrViewState.OK:
+    default: {
+      break;
+    }
+  }
+
+  return Object.assign<any, IPnrViewStateParams, Partial<IPnrViewStateParams>>(
+    {},
+    DEFAULT_PARAMS,
+    params
+  );
+}

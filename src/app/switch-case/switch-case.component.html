@@ -1,0 +1,64 @@
+<select [(ngModel)]="selectedValue">
+  <option *ngFor="let item of items" [value]="item.name">{{
+    item.name
+  }}</option>
+</select>
+
+<!-- switch-case logic -->
+
+<ng-container class="row" [ngSwitch]="selectedValue">
+  <ng-container
+    *ngSwitchCase="'One'"
+    [ngTemplateOutlet]="One"
+    [ngTemplateOutletContext]="{ item: items[0] }"
+  ></ng-container>
+  <ng-container
+    *ngSwitchCase="'Two'"
+    [ngTemplateOutlet]="Two"
+    [ngTemplateOutletContext]="{ item: items[1] }"
+  ></ng-container>
+  <ng-container
+    *ngSwitchDefault
+    [ngTemplateOutlet]="defaultTemplate"
+    [ngTemplateOutletContext]="{ item: items[2] }"
+  ></ng-container>
+</ng-container>
+<br />
+
+<!-- conditional operator logic -->
+
+<ng-container
+  [ngTemplateOutlet]="selectedValue === 'One' ? One : checkOne"
+  [ngTemplateOutletContext]="{ item: items[0] }"
+></ng-container>
+<ng-template #checkOne let-item="item">
+  <ng-container
+    [ngTemplateOutlet]="selectedValue === 'Two' ? Two : checkTwo"
+    [ngTemplateOutletContext]="{ item: items[1] }"
+  >
+  </ng-container>
+</ng-template>
+<ng-template #checkTwo let-item="item">
+  <ng-container
+    [ngTemplateOutlet]="
+      selectedValue === 'Three' ? defaultTemplate : checkDefaultTemplate
+    "
+    [ngTemplateOutletContext]="{ item: items[2] }"
+  >
+  </ng-container>
+</ng-template>
+
+<ng-template #One let-item="item">
+  <div>One is Selected</div>
+  {{ item.name }}
+</ng-template>
+
+<ng-template #Two let-item="item">
+  <div>Two is Selected</div>
+  {{ item.name }}
+</ng-template>
+
+<ng-template #defaultTemplate let-item="item">
+  <div>Default Template</div>
+  {{ item.name }}
+</ng-template>
