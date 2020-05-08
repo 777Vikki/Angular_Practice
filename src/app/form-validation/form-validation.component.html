@@ -1,0 +1,61 @@
+<div class="container">
+  <h1 class="text-center mb-5">Reactive Form Validation</h1>
+  <form [formGroup]="EmployeeForm" (ngSubmit)="onSubmit()">
+    <div
+      class="row form-group"
+      [class.has-error]="checkControls('FName')"
+    >
+      <label for="FName" class="col-2 control-label">First Name</label>
+      <div class="col-10">
+        <input
+          type="text"
+          class="form-control w-50"
+          id="FName"
+          formControlName="FName"
+        />
+        <span
+          class="help-block"
+          *ngIf="checkControls('FName')"
+        >
+          Full Name is required.
+        </span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <h3>FormValidation</h3>
+        <div>touched : {{ EmployeeForm.touched }}</div>
+        <div>untouched : {{ EmployeeForm.untouched }}</div>
+        <div>pristine : {{ EmployeeForm.pristine }}</div>
+        <div>dirty : {{ EmployeeForm.dirty }}</div>
+        <div>valid : {{ EmployeeForm.valid }}</div>
+        <div>invalid : {{ EmployeeForm.invalid }}</div>
+      </div>
+      <div class="col-6">
+        <h3>FName Validation</h3>
+        <div>touched : {{ EmployeeForm.controls.FName.touched }}</div>
+        <div>untouched : {{ EmployeeForm.controls.FName.untouched }}</div>
+        <div>pristine : {{ EmployeeForm.controls.FName.pristine }}</div>
+        <div>dirty : {{ EmployeeForm.controls.FName.dirty }}</div>
+        <div>valid : {{ EmployeeForm.controls.FName.valid }}</div>
+        <div>invalid : {{ EmployeeForm.controls.FName.invalid }}</div>
+        <div>status : {{EmployeeForm.controls.FName.status}}</div>
+        <div>Pending : {{EmployeeForm.controls.FName.pending}}</div>
+      </div>
+    </div>
+    <div class="row form-group">
+      <label for="LName" class="col-2">Last Name</label>
+      <div class="col-10">
+        <input
+          type="text"
+          class="form-control w-50"
+          id="LName"
+          formControlName="LName"
+        />
+      </div>
+    </div>
+    <div class="ml-5">
+      <button type="submit" [disabled]="!EmployeeForm.valid" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>

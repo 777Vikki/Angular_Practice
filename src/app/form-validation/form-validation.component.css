@@ -1,0 +1,12 @@
+.has-error .control-label{
+    color: red;
+}
+
+.has-error .form-control {
+    border-color: red;
+}
+
+.help-block {
+    color: red;
+}
+

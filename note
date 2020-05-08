@@ -1,0 +1,79 @@
+
+<div class="row mb-5 mt-3">
+  <div class="col-sm-3"></div>
+  <div
+    class="col-sm-2 breadcrumb-l"
+    *ngFor="let item of breadcrumbs; let i = index"
+  >
+    <a 
+      class="no-underline link"
+      [routerLink]="item.link"
+      routerLinkActive="active-link"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <ng-container
+        [ngTemplateOutlet]="item.state == 0 ? active : lockcheck"
+        [ngTemplateOutletContext]="{ item: item }"
+      ></ng-container>
+    </a>
+    <div *ngIf="i < breadcrumbs.length - 1" class="next-arrow">
+      <i-feather name="arrow-right" class="text-dark"></i-feather>
+    </div>
+  </div>
+</div>
+<ng-container *ngFor="let item of breadcrumbs; let i = index">
+  <app-breadcrumb-missing-state 
+    *ngIf="isLocked(item)"
+    [link]="breadcrumb.link"
+    [description] = "item.desc"
+    [title]="item.name"></app-breadcrumb-missing-state>
+</ng-container>
+
+<ng-template #lockcheck let-item="item">
+  <ng-container
+    [ngTemplateOutlet]="item.state == 1 ? completed : locked"
+    [ngTemplateOutletContext]="{ item: item }"
+  ></ng-container>
+</ng-template>
+
+<!-- Active Breadcrumb -->
+<ng-template #active let-item="item">
+  <div class="active-crumb">
+    <div class="breadcrumb-icon-ring">
+      <div class="breadcrumb-icon">
+        {{ item.index + 1 }}
+      </div>
+    </div>
+    <div class="breadcrumb-label">
+      {{ item.name }}
+    </div>
+  </div>
+</ng-template>
+
+<!-- Completed Breadcrumb-->
+<ng-template #completed let-item="item">
+  <div class="completed-crumb">
+    <div class="breadcrumb-icon-ring">
+      <div class="breadcrumb-icon">
+        <i-feather name="check" class="text-light"></i-feather>
+      </div>
+    </div>
+    <div class="breadcrumb-label">
+      {{ item.name }}
+    </div>
+  </div>
+</ng-template>
+
+<!-- Locked Breadcrumb -->
+<ng-template #locked let-item="item">
+  <div class="locked-crumb">
+    <div class="breadcrumb-icon-ring">
+      <div class="breadcrumb-icon">
+        <i-feather name="lock" class="text-light"></i-feather>
+      </div>
+    </div>
+    <div class="breadcrumb-label">
+      {{ item.name }}
+    </div>
+  </div>
+</ng-template>
