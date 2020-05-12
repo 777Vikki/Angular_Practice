@@ -13,6 +13,7 @@ export class FormValidationComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+//     see notes and Reactive Property Notes in src folder
     this.createReactiveForm();
   }
 
