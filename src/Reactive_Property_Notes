@@ -1,0 +1,107 @@
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+interface IEmployee {
+  FName: string;
+  LName: string;
+  Address: {
+    Add1: string;
+    Add2: string;
+  }
+}
+@Component({
+  selector: 'app-form-validation',
+  templateUrl: './form-validation.component.html',
+  styleUrls: ['./form-validation.component.css']
+})
+export class FormValidationComponent implements OnInit {
+
+  EmployeeForm: FormGroup;
+
+  constructor(private fb: FormBuilder) { }
+
+  ngOnInit() {
+    this.createReactiveForm();
+    this.setValueReactiveForm();
+    // Get FName property
+    console.log(this.EmployeeForm.get('FName'));
+
+    // Use valueChange, This is synchronize. If we change on Template, got effect here.
+    this.EmployeeForm.valueChanges.subscribe((res: IEmployee) => {
+      console.log(res);
+    });
+
+    // valueChange on 'FName'
+    this.EmployeeForm.get('FName').valueChanges.subscribe((res: string) => {
+      console.log(res);
+    });
+
+    // loop over EmployeeForm
+    this.onLoadDataClick();
+
+  }
+
+  logKeyValuePairs(group: FormGroup) {
+    Object.keys(group.controls).forEach((key: string) => {
+      const abstractControl = group.get(key);
+      if (abstractControl instanceof FormGroup) {
+        // The instanceof operator in JavaScript is used to check the type of an object at run time.
+        // here we can apply abstractControl property ex make disabled, dirty, touched etc.
+        this.logKeyValuePairs(abstractControl);
+      } else {
+        console.log('Key = ' + key + 'Value = ' + abstractControl.value);
+      }
+    });
+  }
+
+  onLoadDataClick() {
+    this.logKeyValuePairs(this.EmployeeForm);
+  }
+
+  setValueReactiveForm() {
+    this.EmployeeForm.setValue({
+      FName: "Vivek",
+      LName: "Maurya",
+      Address: {
+        Add1: "Varanasi",
+        Add2: "Sivon"
+      }
+    });
+  }
+
+  createReactiveForm() {
+    this.EmployeeForm = this.fb.group({
+      FName: [''],
+      LName: [''],
+      Address: this.fb.group({
+        Add1: [''],
+        Add2: ['']
+      })
+    });
+  }
+
+  onContractPreferenceChange(selectValue: string) {
+    const FNameControl = this.EmployeeForm.get(selectValue);
+    if (selectValue === 'FName') {
+      FNameControl.setValidators(Validators.required);
+    } else {
+      FNameControl.clearValidators();
+    }
+    FNameControl.updateValueAndValidity();
+  }
+
+  get Controls() {
+    console.log(typeof this.EmployeeForm.controls);
+    return this.EmployeeForm.controls;
+  }
+
+  checkControls(controlName: string): boolean {
+    // This function used for check error and called this from template and pass controlName ex FName
+    // we can use all 
+    // return eval("this.Controls." + controlName +".invalid && this.Controls." + controlName + ".touched");
+    // return this.Controls[controlName].invalid && this.Controls[controlName].touched;
+    return this.EmployeeForm.get(controlName).invalid && this.EmployeeForm.get(controlName).touched;
+  }
+  onSubmit() {
+    console.log(this.EmployeeForm.get("FName").value);
+  }
+}
