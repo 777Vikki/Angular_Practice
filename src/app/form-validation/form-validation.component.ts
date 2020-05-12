@@ -28,7 +28,10 @@ export class FormValidationComponent implements OnInit {
   }
 
   checkControls(controlName: string) {
-    return eval("this.Controls." + controlName +".invalid && this.Controls." + controlName + ".touched");
+    // we can use all 
+    // return eval("this.Controls." + controlName +".invalid && this.Controls." + controlName + ".touched");
+    // return this.Controls[controlName].invalid && this.Controls[controlName].touched;
+    return this.EmployeeForm.get(controlName).invalid && this.EmployeeForm.get(controlName).touched;
   }
   onSubmit() {
     console.log(this.EmployeeForm);
