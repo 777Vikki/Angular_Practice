@@ -22,5 +22,7 @@ export class ConfirmEqualValidatorDirective implements Validator {
     }
 
     return {notEqual: false};
+    //OR
+//     return null
   }
 }
