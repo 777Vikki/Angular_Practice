@@ -1,3 +1,15 @@
+> Setting up localization with the Angular CL
+  ng add @angular/localize
+
+> Add the xliffmerge tooling
+  ng add @ngx-i18nsupport/tooling --i18nLocale=en --languages de, en
+
+> Generate a message.xlf file
+  ng xi18n sampleapp --output-path src/locale --i18n-locale en
+ 
+> Generate and merge xlf file
+  ng xi18n sampleapp --i18n-format xlf --output-path src/locale --i18n-locale en && ng run sampleapp: xliffmerge
+
 to run fr:
 ng serve --configuration=fr
 
